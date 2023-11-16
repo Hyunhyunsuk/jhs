@@ -1,33 +1,39 @@
 # jhs
+# markdown 문법정리 5가지 
 
-# 각 필요 요소 import
----------------------
-import cv2
-import numpy as np
-from matplotlib import pyplot as plt
+# 제목지정
+---------------------------------------------------------
+#를 활용하여 제목 Header을 지정한다 
+#를 많이 활용할수록 글자 크기를 줄일 수 있다.
 
-# Chosun.jpg 라는 이미지 파일을 불러오기
----------------------------------------
-image = cv2.imread('Chosun.jpg') 
-image_gray = cv2.imread('Chosun.jpg', cv2.IMREAD_GRAYSCALE)
+# 인용하기
+---------------------------------------------------------
+">" 를 통해 인용물을 활용할 수 있다.
 
-# Chosun.jpg 띄우기
--------------------
-b,g,r = cv2.split(image)
-image2 = cv2.merge([r,g,b]) 
-plt.imshow(image2)
-plt.xticks([])
-plt.yticks([])
-plt.show()
+# Link 삽입---------------------------------------------------------
+markdown에 링크를 거는 경우 그대로 주소를 넣을경우 알아서 링크가 걸린다.
+[이름](주소) 형태로 링크를 걸어주는게 일반적이다.
 
-# 블러 처리를 통한 외곽찾기
---------------------------
-blur = cv2.GaussianBlur(image_gray, ksize=(5,5), sigmaX=0)
-ret, thresh1 = cv2.threshold(blur, 127, 255, cv2.THRESH_BINARY)
+# IMAGE 삽입
+---------------------------------------------------------
+markdown에 이미지를 삽입하는 방법은 [이름](이미지 주소) 이런식으로 링크 삽입과 유사하다.
+이미지 크기를 조절할때는 <img src = "주소" width = height = alt = ></img> 여기서 width와 height에 원하는 사이즈를 넣어주면 된다.
 
-# Canny() 를 사용한 외곽코드
----------------------------
-# 이미지의 엣지만 돌려주는 Canny() 함수를 사용
-edged = cv2.Canny(blur, 10, 250)
-cv2.imshow('Edged', edged)
-cv2.waitKey(0)
+# Font (글자 색,크기,굵기,기울기,글꼴을 바꾸는 방법이다.)
+---------------------------------------------------------
+<span style="">내용</span> 이런식으로 활용한다.
+# 글자 색
+<span style="color:red">Font</span>
+
+# 글자 크기
+<p style="font-size:1px">1px</p>
+
+# 글자 굵기
+<p style="font-weight:bold">html 굵기</p>
+
+# 글자 기울기
+<p style="font-style:italic">html 기울임</p>
+
+# 글자 글꼴
+<span style="font-family: arial">arial</span>
+
